@@ -16,6 +16,22 @@ body {
   align-items: center;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: red;
+  z-index: 10;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 15px;
+}
+
 .icon {
   font-size: 30px;
   color: red;
