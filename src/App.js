@@ -1,19 +1,4 @@
-import {useEffect} from 'react'
-import {useAsync} from 'utils/hooks'
-import GoogleMapReact from 'google-map-react'
-import {FaGripfire} from 'react-icons/fa'
-import {FaSpinner} from 'react-icons/fa'
-
-const fetch = require('node-fetch')
-const FireIcon = props => <FaGripfire className="icon" />
-function FullPageSpinner() {
-  return (
-    <div className="loading">
-      <FaSpinner className="spinner" />
-      <h1>Loading...</h1>
-    </div>
-  )
-}
+import {Map} from 'components/map'
 
 function App() {
   const {
@@ -35,19 +20,7 @@ function App() {
   }
 
   return (
-    <GoogleMapReact
-      bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_API_KEY}}
-      defaultCenter={{
-        lat: -33.10204,
-        lng: -71.49142,
-      }}
-      defaultZoom={5}
-    >
-      {events?.map(event => {
-        const [lng, lat] = event.geometries[0].coordinates
-        return <FireIcon key={lat} lat={lat} lng={lng} />
-      })}
-    </GoogleMapReact>
+      <Map />
   )
 }
 
