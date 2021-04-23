@@ -16,12 +16,20 @@ body {
   align-items: center;
 }
 
+/* Remove Google Maps full screen button */
+.gm-control-active.gm-fullscreen-control {
+  display: none;
+}
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
   z-index: 10;
 }
 
@@ -30,6 +38,16 @@ header h1 {
   font-size: 25px;
   font-weight: bold;
   margin: 15px;
+}
+
+header select {
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+header select:focus {
+  outline: none;
 }
 
 .icon {

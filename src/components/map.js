@@ -6,7 +6,7 @@ import GoogleMapReact from 'google-map-react'
 import {FaGripfire} from 'react-icons/fa'
 const fetch = require('node-fetch')
 
-function Map() {
+function Map({category}) {
   const {
     isLoading,
     data: {events},
@@ -14,12 +14,15 @@ function Map() {
   } = useAsync({data: []})
 
   useEffect(() => {
+    if (!category) {
+      return
+    }
     run(
-      fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories/8').then(res =>
-        res.json(),
-      ),
+      fetch(
+        `https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories/${category}`,
+      ).then(res => res.json()),
     )
-  }, [run])
+  }, [category, run])
 
   if (isLoading) {
     return <FullPageSpinner />
