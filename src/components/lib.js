@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react'
 import {FaSpinner} from 'react-icons/fa'
 
 function FullPageSpinner() {
@@ -9,4 +10,17 @@ function FullPageSpinner() {
   )
 }
 
-export {FullPageSpinner}
+function NoEventsInfoPopUp({show}) {
+  const [display, setDisplay] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisplay(false)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  return display ? <div className="info">No events in this category</div> : null
+}
+
+export {FullPageSpinner, NoEventsInfoPopUp}
