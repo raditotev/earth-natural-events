@@ -35,8 +35,10 @@ header {
 
 header h1 {
   color: #fff;
-  font-size: 25px;
-  font-weight: bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 40px;
+  font-weight: 900;
   margin: 15px;
 }
 
