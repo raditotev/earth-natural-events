@@ -1,9 +1,10 @@
 import {useEffect} from 'react'
+import {Fragment, useEffect} from 'react'
 import {useAsync} from 'utils/hooks'
 import {Event} from './event'
-import {FullPageSpinner} from './lib'
+import {FullPageSpinner, NoEventsInfoPopUp} from './lib'
 import GoogleMapReact from 'google-map-react'
-import {FaGripfire} from 'react-icons/fa'
+import {categoryIcons} from 'utils/category-icons'
 const fetch = require('node-fetch')
 
 function Map({category}) {
@@ -29,16 +30,20 @@ function Map({category}) {
   }
 
   return (
-    <GoogleMapReact
-      bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_API_KEY}}
-      defaultCenter={{
-        lat: -33.10204,
-        lng: -71.49142,
-      }}
-      defaultZoom={5}
-    >
-      {events?.map(event => {
-        const [lng, lat] = event.geometries[0].coordinates
+    <Fragment>
+      {isLoading && <FullPageSpinner />}
+      {events?.length === 0 && <NoEventsInfoPopUp />}
+      <GoogleMapReact
+        bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_API_KEY}}
+        defaultCenter={{
+          lat: 45,
+          lng: 0,
+        }}
+        defaultZoom={1}
+      >
+        {events?.map(event => {
+          const [lng, lat] = event.geometries[0].coordinates
+          return isLoading ? null : (
             <Event
               key={event.id}
               lat={lat}
@@ -46,6 +51,10 @@ function Map({category}) {
               description={event.title}
               children={categoryIcons[category]}
             />
+          )
+        })}
+      </GoogleMapReact>
+    </Fragment>
   )
 }
 
