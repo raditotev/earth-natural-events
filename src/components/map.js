@@ -39,9 +39,13 @@ function Map({category}) {
     >
       {events?.map(event => {
         const [lng, lat] = event.geometries[0].coordinates
-        return <Event key={lat} lat={lat} lng={lng} children={<FaGripfire />} />
-      })}
-    </GoogleMapReact>
+            <Event
+              key={event.id}
+              lat={lat}
+              lng={lng}
+              description={event.title}
+              children={categoryIcons[category]}
+            />
   )
 }
 
