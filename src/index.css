@@ -52,14 +52,59 @@ header select:focus {
   outline: none;
 }
 
+.info {
+  width: 300px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 25px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index: 20;
+}
+
 .icon {
   font-size: 30px;
-  color: red;
+  color: crimson;
+}
+
+.icon .event-card {
+  display: none;
+}
+
+.icon:hover .event-card {
+  display: block;
+  position: absolute;
+  min-width: 200px;
+  top: -70px;
+  color: #fff;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  z-index: 10;
 }
 
 .loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 5;
 }
 
 .loading h1 {
