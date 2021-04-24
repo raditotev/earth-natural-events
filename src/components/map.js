@@ -1,4 +1,3 @@
-import {useEffect} from 'react'
 import {Fragment, useEffect} from 'react'
 import {useAsync} from 'utils/hooks'
 import {Event} from './event'
@@ -25,8 +24,17 @@ function Map({category}) {
     )
   }, [category, run])
 
-  if (isLoading) {
-    return <FullPageSpinner />
+  function renderEvent(point, event, index) {
+    const [lng, lat] = point
+    return (
+      <Event
+        key={event.id + index}
+        lat={lat}
+        lng={lng}
+        description={event.title}
+        children={categoryIcons[category]}
+      />
+    )
   }
 
   return (
@@ -41,18 +49,24 @@ function Map({category}) {
         }}
         defaultZoom={1}
       >
-        {events?.map(event => {
-          const [lng, lat] = event.geometries[0].coordinates
-          return isLoading ? null : (
-            <Event
-              key={event.id}
-              lat={lat}
-              lng={lng}
-              description={event.title}
-              children={categoryIcons[category]}
-            />
-          )
-        })}
+        {events
+          ?.map((event, index) => {
+            if (
+              event.geometries.length > 1 ||
+              Array.isArray(event.geometries[0].coordinates[0])
+            ) {
+              const coordinates =
+                event.geometries.length > 1
+                  ? event.geometries.map(geometry => geometry.coordinates)
+                  : event.geometries[0].coordinates[0]
+              return coordinates.map((point, index) => {
+                return isLoading ? null : renderEvent(point, event, index)
+              })
+            }
+            const point = event.geometries[0].coordinates
+            return isLoading ? null : renderEvent(point, event, index)
+          })
+          .flat()}
       </GoogleMapReact>
     </Fragment>
   )

@@ -9,6 +9,7 @@ import {GiSnowflake2} from 'react-icons/gi'
 import {ImFire} from 'react-icons/im'
 import {RiEarthquakeFill} from 'react-icons/ri'
 import {RiFloodFill} from 'react-icons/ri'
+import {RiTyphoonFill} from 'react-icons/ri'
 import {BsDropletHalf} from 'react-icons/bs'
 
 export const categoryIcons = {
@@ -24,4 +25,5 @@ export const categoryIcons = {
   12: <GiEruption />,
   13: <BsDropletHalf />,
   8: <ImFire />,
+  10: <RiTyphoonFill />,
 }

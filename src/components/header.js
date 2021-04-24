@@ -28,16 +28,14 @@ function Header({category, setCategory}) {
         onChange={handleCategoryChange}
       >
         <option value="">Select event type</option>
-        {categories
-          ?.filter(category => category.id !== 10)
-          .map(category => {
-            const {id, title} = category
-            return (
-              <option key={id} value={id}>
-                {title}
-              </option>
-            )
-          })}
+        {categories?.map(category => {
+          const {id, title} = category
+          return (
+            <option key={id} value={id}>
+              {title}
+            </option>
+          )
+        })}
       </select>
     </header>
   )
