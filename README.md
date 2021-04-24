@@ -9,7 +9,14 @@ there are no events in a category, user is notified via pop up message.
 # Getting Started
 
 This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+[Create React App](https://github.com/facebook/create-react-app). To run
+application locally you will need a Google API secret key. Create file `.env` in
+the root of the project and assign you key to: `REACT_APP_GOOGLE_API_KEY`.
+Running this command from the root of your project will create the file for you:
+
+```bash
+echo "REACT_APP_GOOGLE_API_KEY=add-your-secret-key-here" >> .env
+```
 
 ## Available Scripts
 
