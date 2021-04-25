@@ -21,7 +21,12 @@ function Header({category, setCategory}) {
 
   return (
     <header>
-      <h1>Earth Natural Events</h1>
+      <h1>
+        Earth Natural Events
+        <span>
+          Powered by <strong>NASA</strong>
+        </span>
+      </h1>
       <select
         name="categories"
         aria-label="Select natural event"
