@@ -42,6 +42,20 @@ header h1 {
   margin: 15px;
 }
 
+header span {
+  position: relative;
+  left: -130px;
+  top: 10px;
+  color: darkblue;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+header strong {
+  color: red;
+  font-weight: 900;
+}
+
 header select {
   border-radius: 5px;
   background-color: #fff;
