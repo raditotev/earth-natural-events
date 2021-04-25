@@ -16,7 +16,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build
         env:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+          REACT_APP_GOOGLE_API_KEY: ${{ env.REACT_APP_GOOGLE_API_KEY }}
         run: |
           npm install
           npm run build
