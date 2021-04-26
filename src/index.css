@@ -140,3 +140,29 @@ header select:focus {
   height: 150px;
   animation: spin 1s linear infinite;
 }
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  header span {
+    display: block;
+    position: static;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  header strong {
+    font-weight: 700;
+  }
+
+  header select {
+    margin-top: 10px;
+  }
+}
