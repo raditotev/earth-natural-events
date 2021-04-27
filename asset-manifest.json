@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/earth-natural-events/static/css/main.7c6e241e.chunk.css",
-    "main.js": "/earth-natural-events/static/js/main.87446e1a.chunk.js",
-    "main.js.map": "/earth-natural-events/static/js/main.87446e1a.chunk.js.map",
-    "runtime-main.js": "/earth-natural-events/static/js/runtime-main.12be536e.js",
-    "runtime-main.js.map": "/earth-natural-events/static/js/runtime-main.12be536e.js.map",
-    "static/js/2.d77b54a1.chunk.js": "/earth-natural-events/static/js/2.d77b54a1.chunk.js",
-    "static/js/2.d77b54a1.chunk.js.map": "/earth-natural-events/static/js/2.d77b54a1.chunk.js.map",
-    "static/js/3.1c7a77c3.chunk.js": "/earth-natural-events/static/js/3.1c7a77c3.chunk.js",
-    "static/js/3.1c7a77c3.chunk.js.map": "/earth-natural-events/static/js/3.1c7a77c3.chunk.js.map",
+    "main.css": "/earth-natural-events/static/css/main.f81364e2.chunk.css",
+    "main.js": "/earth-natural-events/static/js/main.1413fd35.chunk.js",
+    "main.js.map": "/earth-natural-events/static/js/main.1413fd35.chunk.js.map",
+    "runtime-main.js": "/earth-natural-events/static/js/runtime-main.2e1accc0.js",
+    "runtime-main.js.map": "/earth-natural-events/static/js/runtime-main.2e1accc0.js.map",
+    "static/js/2.ce4dacfa.chunk.js": "/earth-natural-events/static/js/2.ce4dacfa.chunk.js",
+    "static/js/2.ce4dacfa.chunk.js.map": "/earth-natural-events/static/js/2.ce4dacfa.chunk.js.map",
+    "static/js/3.b7c36053.chunk.js": "/earth-natural-events/static/js/3.b7c36053.chunk.js",
+    "static/js/3.b7c36053.chunk.js.map": "/earth-natural-events/static/js/3.b7c36053.chunk.js.map",
     "index.html": "/earth-natural-events/index.html",
-    "static/css/main.7c6e241e.chunk.css.map": "/earth-natural-events/static/css/main.7c6e241e.chunk.css.map",
-    "static/js/2.d77b54a1.chunk.js.LICENSE.txt": "/earth-natural-events/static/js/2.d77b54a1.chunk.js.LICENSE.txt"
+    "static/css/main.f81364e2.chunk.css.map": "/earth-natural-events/static/css/main.f81364e2.chunk.css.map",
+    "static/js/2.ce4dacfa.chunk.js.LICENSE.txt": "/earth-natural-events/static/js/2.ce4dacfa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.12be536e.js",
-    "static/js/2.d77b54a1.chunk.js",
-    "static/css/main.7c6e241e.chunk.css",
-    "static/js/main.87446e1a.chunk.js"
+    "static/js/runtime-main.2e1accc0.js",
+    "static/js/2.ce4dacfa.chunk.js",
+    "static/css/main.f81364e2.chunk.css",
+    "static/js/main.1413fd35.chunk.js"
   ]
 }
