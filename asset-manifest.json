@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/earth-natural-events/static/css/main.f81364e2.chunk.css",
-    "main.js": "/earth-natural-events/static/js/main.1413fd35.chunk.js",
-    "main.js.map": "/earth-natural-events/static/js/main.1413fd35.chunk.js.map",
+    "main.js": "/earth-natural-events/static/js/main.fb67a41a.chunk.js",
+    "main.js.map": "/earth-natural-events/static/js/main.fb67a41a.chunk.js.map",
     "runtime-main.js": "/earth-natural-events/static/js/runtime-main.2e1accc0.js",
     "runtime-main.js.map": "/earth-natural-events/static/js/runtime-main.2e1accc0.js.map",
     "static/js/2.ce4dacfa.chunk.js": "/earth-natural-events/static/js/2.ce4dacfa.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2e1accc0.js",
     "static/js/2.ce4dacfa.chunk.js",
     "static/css/main.f81364e2.chunk.css",
-    "static/js/main.1413fd35.chunk.js"
+    "static/js/main.fb67a41a.chunk.js"
   ]
 }
