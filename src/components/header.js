@@ -23,6 +23,8 @@ function Header({category, setCategory}) {
     setCategory(e.target.value)
   }
 
+  const mq = '@media (max-width: 600px)'
+
   return (
     <header
       css={css`
@@ -35,6 +37,10 @@ function Header({category, setCategory}) {
         align-items: center;
         padding: 15px;
         z-index: 10;
+        ${mq} {
+          flex-direction: column;
+          justify-content: center;
+        }
       `}
     >
       <h1
@@ -45,6 +51,9 @@ function Header({category, setCategory}) {
           font-size: 40px;
           font-weight: 900;
           margin: 15px;
+          ${mq} {
+            font-size: 25px;
+          }
         `}
       >
         Earth Natural Events
@@ -56,6 +65,12 @@ function Header({category, setCategory}) {
             color: darkblue;
             font-size: 23px;
             font-weight: 700;
+            ${mq} {
+              display: block;
+              position: static;
+              font-size: 15px;
+              font-weight: 500;
+            }
           `}
         >
           Powered by{' '}
@@ -79,6 +94,9 @@ function Header({category, setCategory}) {
           padding: 10px;
           &:focus {
             outline: none;
+          }
+          ${mq} {
+            margin-top: 10px;
           }
         `}
       >
