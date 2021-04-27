@@ -26,7 +26,6 @@ function Event({description, children}) {
             z-index: 10;
           }
         }
-
         }
       `}
     >
