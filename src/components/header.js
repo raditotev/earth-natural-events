@@ -13,7 +13,7 @@ function Header({category, setCategory}) {
 
   useEffect(() => {
     run(
-      fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories').then(res =>
+      fetch('https://eonet.sci.gsfc.nasa.gov/api/v3/events/geojson').then(res =>
         res.json(),
       ),
     )
