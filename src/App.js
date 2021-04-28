@@ -3,12 +3,12 @@ import {Header} from 'components/header'
 import {Fragment, useState} from 'react'
 
 function App() {
-  const [category, setCategory] = useState(null)
+  const [events, setEvents] = useState([])
 
   return (
     <Fragment>
-      <Header category={category} setCategory={setCategory} />
-      <Map category={category} />
+      <Header setEvents={setEvents} />
+      <Map events={events} />
     </Fragment>
   )
 }
