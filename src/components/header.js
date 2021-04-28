@@ -4,26 +4,39 @@ import {css, jsx} from '@emotion/react'
 
 import {useEffect} from 'react'
 import {useAsync} from 'utils/hooks'
+import {FullPageSpinner} from './lib'
 
-function Header({category, setCategory}) {
+function getCategories(events) {
+  return [...new Set(events.map(feat => feat.properties.categories[0].title))]
+}
+
+function Header({setEvents}) {
   const {
-    data: {categories},
+    isLoading,
+    data: {features: events},
     run,
-  } = useAsync({data: {categories: []}})
+  } = useAsync({data: {features: []}})
 
   useEffect(() => {
     run(
-      fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories').then(res =>
+      fetch('https://eonet.sci.gsfc.nasa.gov/api/v3/events/geojson').then(res =>
         res.json(),
       ),
     )
   }, [run])
 
   function handleCategoryChange(e) {
-    setCategory(e.target.value)
+    const category = e.target.value
+    setEvents(
+      events.filter(event => event.properties.categories[0].title === category),
+    )
   }
 
   const mq = '@media (max-width: 600px)'
+
+  if (isLoading) {
+    return <FullPageSpinner />
+  }
 
   return (
     <header
@@ -101,11 +114,13 @@ function Header({category, setCategory}) {
         `}
       >
         <option value="">Select event type</option>
-        {categories?.map(category => {
-          const {id, title} = category
+        {getCategories(events).map(category => {
           return (
-            <option key={id} value={id}>
-              {title}
+            <option
+              key={category.toLowerCase().split(' ').join('-')}
+              value={category}
+            >
+              {category}
             </option>
           )
         })}
