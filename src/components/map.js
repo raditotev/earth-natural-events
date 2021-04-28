@@ -1,37 +1,18 @@
-import {Fragment, useEffect} from 'react'
-import {useAsync} from 'utils/hooks'
+import {Fragment} from 'react'
+import {v4 as uuidv4} from 'uuid'
 import {Event} from './event'
-import {FullPageSpinner, NoEventsInfoPopUp} from './lib'
 import GoogleMapReact from 'google-map-react'
 import {categoryIcons} from 'utils/category-icons'
-const fetch = require('node-fetch')
 
-function Map({category}) {
-  const {
-    isLoading,
-    data: {events},
-    run,
-  } = useAsync({data: []})
-
-  useEffect(() => {
-    if (!category) {
-      return
-    }
-    run(
-      fetch(
-        `https://eonet.sci.gsfc.nasa.gov/api/v2.1/categories/${category}`,
-      ).then(res => res.json()),
-    )
-  }, [category, run])
-
-  function renderEvent(point, event, index) {
+function Map({events}) {
+  function renderEvent(point, event, category) {
     const [lng, lat] = point
     return (
       <Event
-        key={event.id + index}
+        key={uuidv4()}
         lat={lat}
         lng={lng}
-        description={event.title}
+        description={event.properties.title}
         children={categoryIcons[category]}
       />
     )
@@ -39,8 +20,6 @@ function Map({category}) {
 
   return (
     <Fragment>
-      {isLoading && <FullPageSpinner />}
-      {events?.length === 0 && <NoEventsInfoPopUp />}
       <GoogleMapReact
         bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_API_KEY}}
         defaultCenter={{
@@ -49,24 +28,19 @@ function Map({category}) {
         }}
         defaultZoom={1}
       >
-        {events
-          ?.map((event, index) => {
-            if (
-              event.geometries.length > 1 ||
-              Array.isArray(event.geometries[0].coordinates[0])
-            ) {
-              const coordinates =
-                event.geometries.length > 1
-                  ? event.geometries.map(geometry => geometry.coordinates)
-                  : event.geometries[0].coordinates[0]
-              return coordinates.map((point, index) => {
-                return isLoading ? null : renderEvent(point, event, index)
-              })
-            }
-            const point = event.geometries[0].coordinates
-            return isLoading ? null : renderEvent(point, event, index)
-          })
-          .flat()}
+        {events.map((event, index) => {
+          const category = event.properties.categories[0].id
+          if (Array.isArray(event.geometry.coordinates[0])) {
+            return event.geometry.coordinates.map(point => {
+              return Array.isArray(point[0])
+                ? point.map(point => renderEvent(point, event, category))
+                : renderEvent(point, event, category)
+            })
+          } else {
+            const point = event.geometry.coordinates
+            return renderEvent(point, event, category)
+          }
+        })}
       </GoogleMapReact>
     </Fragment>
   )
