@@ -3,8 +3,11 @@
 import {css, jsx} from '@emotion/react'
 
 import {useEffect} from 'react'
+import {client} from 'utils/api-client'
 import {useAsync} from 'utils/hooks'
 import {FullPageSpinner} from './lib'
+
+const EVENTS_ENDPOINT = 'events/geojson'
 
 function getCategories(events) {
   return [...new Set(events.map(feat => feat.properties.categories[0].title))]
@@ -18,11 +21,7 @@ function Header({setEvents}) {
   } = useAsync({data: {features: []}})
 
   useEffect(() => {
-    run(
-      fetch('https://eonet.sci.gsfc.nasa.gov/api/v3/events/geojson').then(res =>
-        res.json(),
-      ),
-    )
+    run(client(EVENTS_ENDPOINT))
   }, [run])
 
   function handleCategoryChange(e) {
