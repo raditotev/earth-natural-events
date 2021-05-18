@@ -33,10 +33,6 @@ function Header({setEvents}) {
 
   const mq = '@media (max-width: 600px)'
 
-  if (isLoading) {
-    return <FullPageSpinner />
-  }
-
   return (
     <header
       css={css`
@@ -96,34 +92,38 @@ function Header({setEvents}) {
           </strong>
         </span>
       </h1>
-      <select
-        name="categories"
-        aria-label="Select natural event"
-        onChange={handleCategoryChange}
-        css={css`
-          border-radius: 5px;
-          background-color: #fff;
-          padding: 10px;
-          &:focus {
-            outline: none;
-          }
-          ${mq} {
-            margin-top: 10px;
-          }
-        `}
-      >
-        <option value="">Select event type</option>
-        {getCategories(events).map(category => {
-          return (
-            <option
-              key={category.toLowerCase().split(' ').join('-')}
-              value={category}
-            >
-              {category}
-            </option>
-          )
-        })}
-      </select>
+      {isLoading ? (
+        <FullPageSpinner />
+      ) : (
+        <select
+          name="categories"
+          aria-label="Select natural event"
+          onChange={handleCategoryChange}
+          css={css`
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 10px;
+            &:focus {
+              outline: none;
+            }
+            ${mq} {
+              margin-top: 10px;
+            }
+          `}
+        >
+          <option value="">Select event type</option>
+          {getCategories(events).map(category => {
+            return (
+              <option
+                key={category.toLowerCase().split(' ').join('-')}
+                value={category}
+              >
+                {category}
+              </option>
+            )
+          })}
+        </select>
+      )}
     </header>
   )
 }
